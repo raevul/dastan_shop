@@ -12,7 +12,7 @@ class RegisterView(CreateView):
     model = User
     template_name = 'register.html'
     form_class = RegistrationForm
-    success_url = reverse_lazy('login')
+    success_url = 'https://mail.google.com/'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

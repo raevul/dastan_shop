@@ -36,6 +36,6 @@ class RegistrationForm(ModelForm):
         return data
 
     def save(self):
-        user = super().save()
+        user = User.objects.create_user(**self.cleaned_data)
         send_activation_mail(user)
         return user

@@ -5,12 +5,14 @@ from django.utils.crypto import get_random_string
 
 
 class MyUserManager(BaseUserManager):
+    use_in_migrations = True
+
     def _create(self, email, password, **extra_fields):
         if not email:
             raise ValueError('Email is required')
-
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
+        user.create_activation_code()
         user.set_password(password)
         return user
 
@@ -42,4 +44,4 @@ class MyUser(AbstractUser):
     def create_activation_code(self):
         code = get_random_string(18)
         self.activation_code = code
-        self.save(update_fields=['activation_code'])
+        self.save()

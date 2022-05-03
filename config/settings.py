@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -87,7 +88,7 @@ DATABASES = {
         'NAME': 'shop',
         'USER': 'shop_admin',
         'PASSWORD': 'shop_psw123',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT': 5432
     }
 }
@@ -147,3 +148,8 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = config('EMAIL_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
+
+# redirect
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/account/login/'
+LOGOUT_REDIRECT_URL = '/'
