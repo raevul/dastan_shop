@@ -4,7 +4,6 @@ from django.shortcuts import (
     redirect
 )
 from django.views.decorators.http import require_http_methods
-
 from cart.forms import CartAddProductForm
 from cart.helpers import Cart
 from shop.models import Product
@@ -34,6 +33,4 @@ def cart_remove(request, product_id):
 
 def cart_detail(request):
     cart = Cart(request)
-    return render(request,
-                  'cart_detail.html', {}
-                  )
+    return render(request, 'cart_detail.html', {})
